@@ -9,7 +9,7 @@ xml.xpath("/dictionary[1]/direction[1]/valsi").each do |v|
     entry[:gloss] = v.xpath("glossword").map(&:attributes)
     entry[:def] = v.xpath("definition").text
     selmaho = v.xpath("selmaho").text
-    entry[:selmaho] = selmaho if selmaho
+    entry[:selmaho] = selmaho unless selmaho.empty?
     entires << entry
 end
 
